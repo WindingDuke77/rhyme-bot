@@ -5,7 +5,7 @@
 ## Basic Info
 
 This bot allows you get ryhmes for any word that you want and you can challenge your friends to a Rhyme Off.
-[Invite the Bot](https://discord.com/api/oauth2/authorize?client_id=1024776622143975434&permissions=274878254144&scope=applications.commands%20bot)
+[Invite the Bot](https://discord.com/api/oauth2/authorize?client_id=1024776622143975434&permissions=274878254144&scope=applications.commands%20bot) <br />
 ![image](https://top.gg/api/widget/1024776622143975434.svg)
 
 ### Commands
