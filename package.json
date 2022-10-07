@@ -1,0 +1,21 @@
+{
+  "name": "rhymebot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/builders": "^0.14.0",
+    "@discordjs/rest": "^0.4.1",
+    "archiver": "^5.3.1",
+    "discord-api-types": "^0.33.5",
+    "discord.js": "^13.11.0",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "ms": "^2.1.3"
+  }
+}
