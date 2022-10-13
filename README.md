@@ -25,4 +25,8 @@ It a game that you can challenge your friends to Rhyme a Word of your choice.
 - Requires: Node Js - >16
 - Invite: https://discord.com/api/oauth2/authorize?client_id={clientId}&permissions=274878254144&scope=applications.commands%20bot
 - .env file: 
-`DISCORD_TOKEN = "TOKEN"`
+```
+DISCORD_TOKEN = "TOKEN"
+type = "dev"
+devServer = "848034509714620416"
+```
