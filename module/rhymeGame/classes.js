@@ -34,7 +34,7 @@ class RhymeGame {
 
     const Template = new this.discord.MessageEmbed()
       .setColor(Math.floor(Math.random() * 16777215).toString(16))
-      .setFooter(`Started by ${this.interation.member.user.tag}`)
+      .setFooter({ text: `Started by ${this.interation.member.user.tag}` })
       .setTimestamp()
       .setDescription(
         `If you would like to join the game\n**Click ✋** \nThe game will begin in **${this.countdown} seconds**`
@@ -101,7 +101,7 @@ class RhymeGame {
 
     const Template = new this.discord.MessageEmbed()
       .setColor(Math.floor(Math.random() * 16777215).toString(16))
-      .setFooter(`Started by ${this.interation.member.user.tag}`)
+      .setFooter({ text: `Started by ${this.interation.member.user.tag}` })
       .setTimestamp()
       .setDescription(
         `The game is now starting \nThe word is **${this.startWord}**`

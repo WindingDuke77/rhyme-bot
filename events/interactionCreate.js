@@ -7,6 +7,19 @@ const cooldownMap = new Map();
 module.exports = async (Discord, client, interaction) => {
   if (!interaction.isCommand()) return;
 
+  if (
+    interaction.guild.id == process.env.devServer &&
+    process.env.type != "dev"
+  ) {
+    return;
+  }
+
+  if (
+    process.env.type == "dev" &&
+    interaction.guild.id != process.env.devServer
+  )
+    return;
+
   const command = client.scommands.get(interaction.commandName);
 
   if (!command)
@@ -32,6 +45,24 @@ module.exports = async (Discord, client, interaction) => {
   } else {
     let endtime = Date.now() + command.cooldown * 1000;
     cooldownMap.set(commandName + interaction.user.id, endtime);
+  }
+
+  const permissionNeeded = ["SEND_MESSAGES", "EMBED_LINKS", "ADD_REACTIONS"];
+
+  let invalidPerms = [];
+  let permissions = interaction.channel.permissionsFor(client.user).toArray();
+  console.log(permissions);
+  permissionNeeded.forEach((perm) => {
+    if (!permissions.includes(perm)) {
+      invalidPerms.push(perm);
+    }
+  });
+  if (invalidPerms.length > 0) {
+    interaction.reply({
+      content: `Bot Missing Permissions: ${invalidPerms}`,
+      ephemeral: true,
+    });
+    return;
   }
 
   try {

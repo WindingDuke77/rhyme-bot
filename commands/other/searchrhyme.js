@@ -44,7 +44,7 @@ module.exports = {
 
     const Template = new Discord.MessageEmbed()
       .setColor(Math.floor(Math.random() * 16777215).toString(16))
-      .setFooter(`Search by ${interation.user.tag}`)
+      .setFooter({ text: `Search by ${interation.user.tag}` })
       .setTimestamp()
       .setTitle("📚 Rhyme Search 📚")
       .setDescription(description);

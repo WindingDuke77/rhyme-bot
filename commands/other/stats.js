@@ -15,7 +15,7 @@ module.exports = {
 
     const Template = new Discord.MessageEmbed()
       .setColor(Math.floor(Math.random() * 16777215).toString(16))
-      .setFooter(`Powered by RhymeBrain.com`)
+      .setFooter({ text: `Powered by RhymeBrain.com` })
       .setTimestamp()
       .setTitle("📚 Rhyme Bot Stats 📚")
       .setDescription("Here some of our Stats")
@@ -23,27 +23,32 @@ module.exports = {
         {
           name: "Ping",
           value: `${ms(Math.abs(Date.now() - interation.createdAt))}`,
-          inline: false,
+          inline: true,
         },
         {
           name: "Uptime",
           value: `${ms(Math.abs(Date.now() - startTime))}`,
-          inline: false,
+          inline: true,
+        },
+        {
+          name: "Guilds",
+          value: `${client.guilds.cache.size}`,
+          inline: true,
         },
         {
           name: "Total Games",
           value: `${stats["totalGames"]}`,
-          inline: false,
+          inline: true,
         },
         {
           name: "Total Rhymes Guess",
           value: `${stats["totalRhymesGuess"]}`,
-          inline: false,
+          inline: true,
         },
         {
           name: "Total Searchs",
           value: `${stats["totalSearchs"]}`,
-          inline: false,
+          inline: true,
         }
       );
 
