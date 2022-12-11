@@ -6,7 +6,9 @@
 
 This bot allows you get ryhmes for any word that you want and you can challenge your friends to a Rhyme Off. <br />
 [Invite the Bot](https://discord.com/api/oauth2/authorize?client_id=1024776622143975434&permissions=274878254144&scope=applications.commands%20bot) <br />
-![image](https://top.gg/api/widget/1024776622143975434.svg)
+<a href="https://top.gg/bot/1024776622143975434">
+  <img src="https://top.gg/api/widget/1024776622143975434.svg">
+</a>
 
 ### Commands
 - /startgame [word] - starts the Rhyme off
