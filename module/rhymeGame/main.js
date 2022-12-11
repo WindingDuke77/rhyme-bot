@@ -31,6 +31,14 @@ function stopGame(interation, discord, client) {
     });
   }
 
+  if (activeGames.get(interation.guild.id).selfDestruct) {
+    activeGames.delete(interation.guild.id);
+    return interation.reply({
+      content: "No Game is Running",
+      ephemeral: true,
+    });
+  }
+
   activeGames.get(interation.guild.id).stop();
   interation.reply({
     content: "The Game has been Stopped.",

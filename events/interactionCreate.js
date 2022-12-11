@@ -1,6 +1,3 @@
-const { REST } = require("@discordjs/rest");
-const { Routes } = require("discord-api-types/v9");
-
 const ms = require("ms");
 const cooldownMap = new Map();
 
@@ -51,7 +48,6 @@ module.exports = async (Discord, client, interaction) => {
 
   let invalidPerms = [];
   let permissions = interaction.channel.permissionsFor(client.user).toArray();
-  console.log(permissions);
   permissionNeeded.forEach((perm) => {
     if (!permissions.includes(perm)) {
       invalidPerms.push(perm);
