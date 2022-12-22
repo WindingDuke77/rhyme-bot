@@ -3,7 +3,7 @@ const { addStat } = require("../../functions/stat");
 
 const activeGames = new Map();
 
-function startGame(interation, discord, client, word) {
+function startGame(interation, discord, client, word, lives) {
   if (activeGames.get(interation.guild.id)) {
     if (activeGames.get(interation.guild.id).selfDestruct) {
       activeGames.delete(interation.guild.id);
@@ -15,7 +15,7 @@ function startGame(interation, discord, client, word) {
     }
   }
 
-  let game = new RhymeGame(interation, discord, client, word);
+  let game = new RhymeGame(interation, discord, client, word, lives);
 
   addStat("totalGames", 1);
 

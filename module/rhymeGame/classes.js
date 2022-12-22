@@ -3,7 +3,7 @@ const { addStat } = require("../../functions/stat");
 const fetch = require("node-fetch");
 
 class RhymeGame {
-  constructor(interation, discord, client, word) {
+  constructor(interation, discord, client, word, lives) {
     this.interation = interation;
     this.discord = discord;
     this.client = client;
@@ -22,6 +22,7 @@ class RhymeGame {
 
     this.countdown = 30; // change to 60
     this.countdownMsg = null;
+    this.MaxLives = lives || 1;
   }
   async start() {
     if (!(await this.getvalidRhymes())) {
@@ -96,7 +97,7 @@ class RhymeGame {
       if (player.id == this.client.user.id) {
         return;
       }
-      this.players.set(player.id, new RhymePlayer(player));
+      this.players.set(player.id, new RhymePlayer(player, this.MaxLives));
     });
 
     const Template = new this.discord.MessageEmbed()
@@ -130,10 +131,13 @@ class RhymeGame {
       m.content = m.content.toLowerCase();
       if (!this.validRhymeWords[m.content]) {
         m.react("❌");
-        this.failedPlayers += 1;
-        player.failed = true;
+        
+        player.loseLife();
+        if (player.failed) {
+          this.failedPlayers++;
+        }
         m.reply({
-          content: "That Word doesnt Rhyme or Already been said.\nYou are out",
+          content: `That Word doesnt Rhyme or Already been said.\n You have ${player.lives} life`,
           ephemeral: true,
         });
       } else {
@@ -197,14 +201,21 @@ class RhymeGame {
 }
 
 class RhymePlayer {
-  constructor(user) {
+  constructor(user, maxLives) {
     this.failed = false;
     this.words = [];
     this.user = user;
+    this.lives = maxLives;
   }
   addWord(word) {
     addStat("totalRhymesGuess", 1);
     this.words.push(word);
+  }
+  loseLife() {
+    this.lives -= 1;
+    if (this.lives <= 0) {
+      this.failed = true;
+    }
   }
 }
 
